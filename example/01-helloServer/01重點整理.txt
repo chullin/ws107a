@@ -1,0 +1,29 @@
+凡是連上 TCP IP 都是 Internet 
+
+架設在 TCP IP 之上 才是 web，像是 http
+
+Letsencrypt(Liunx 免費認證https)
+
+傳統模式:換頁  新模式:不換頁
+
+<pre> 不格式化，以原本格式呈現
+
+/* 箭頭函數
+function(a,b) {}
+(a,b) => {}
+*/
+
+DOM document object medel
+為了納入 DOM 架構，所以如果不完整他會幫你自動補上(ex: <body></body> )
+
+locolhost = 127.0.0.1 都代表本機
+
+要安裝 curl
+$ curl -i http://localhost:3000/
+HTTP/1.1 200 OK
+Content-Length: 192
+Last-Modified: Mon, 10 Sep 2018 01:53:15 GMT
+Cache-Control: max-age=0
+Content-Type: text/html; charset=utf-8            // setHeader
+Date: Mon, 10 Sep 2018 04:05:24 GMT
+Connection: keep-alive                            // 持續連結
