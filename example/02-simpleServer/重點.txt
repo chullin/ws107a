@@ -1,0 +1,7 @@
+echo:
+locolhost:3000/aaa/bbb/ccc.html?name=ccc
+url = /aaa/bbb/ccc.html?name=ccc
+如果改後面的東西 (/aaa/bbb/ccc.html?name=ccc)
+url 會抓取後面的東西
+
+.listen 傾聽狀態，執行後就不會跳出(類似無窮迴圈)
