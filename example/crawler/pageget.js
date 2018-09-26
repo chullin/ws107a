@@ -1,6 +1,6 @@
 var http = require('http');
 
-http.get('http://www.nqu.edu.tw/cht/index.php?', function(res) {
+http.get('http://localhost:3000/', function(res) { // 不支援https
   console.log('Got response: ' + res.statusCode)
   res.on('data', function (chunk) {
     console.log('BODY: ' + chunk)

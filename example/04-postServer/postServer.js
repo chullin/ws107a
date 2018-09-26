@@ -14,10 +14,10 @@ const server = http.createServer(function (req, res) {
   let body = [];
   req.on('error', (err) => {
     console.error(err);
-  }).on('data', (chunk) => {
+  }).on('data', (chunk) => { // 如果有收到資料，就將資料放在body後面 chunk 小段資料
     body.push(chunk);
   }).on('end', () => {
-    body = Buffer.concat(body).toString();
+    body = Buffer.concat(body).toString(); // buffer 文字
     console.log('body=', body)
     // At this point, we have the headers, method, url and body, and can now
     // do whatever we need to in order to respond to this request.
