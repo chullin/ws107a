@@ -6,4 +6,11 @@ function chunk (array, n) {
     return clist
   }
   
+  
   module.exports = chunk
+/*
+  lodash={}
+  lodash.chunk = chunk
+  lodash.concat = concat
+  module.exports = lodash
+  */

@@ -1,0 +1,12 @@
+{
+  "name": "hwexercise",
+  "version": "0.0.1",
+  "description": "remake lodash function",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "ISC"
+}
+
