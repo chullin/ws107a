@@ -1,5 +1,5 @@
 function chunk () {
-return chunk;
+  return 'Hello';
 }
   
-  module.exports = chunk
+module.exports = chunk

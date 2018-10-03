@@ -1,3 +1,3 @@
 const _ = require('../index')
 
-console.log('chunk=',_.chunk());
+console.log('chunk=', _.chunk());

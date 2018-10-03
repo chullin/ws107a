@@ -1,4 +1,4 @@
-const Koa = require('koa');
+const Koa = require('koa'); // 類別，可以new一個物件，開頭就會大寫(習慣)
 const app = module.exports = new Koa();
 
 app.use(async function(ctx) {
