@@ -33,12 +33,18 @@
     "koa-csrf": "^3.0.6",
     "koa-json": "^2.0.2",
     "koa-logger": "^3.2.0",
+    "koa-mount": "^4.0.0",
     "koa-router": "^7.4.0",
     "koa-session": "^5.9.0",
     "koa-static": "^5.0.0",
     "koa-views": "^6.1.4",
     "lodash": "^4.17.11",
+<<<<<<< HEAD
     "mocha": "^5.2.0",
+=======
+    "nightwatch": "^0.9.21",
+    "puppeteer": "^1.8.0",
+>>>>>>> 73110842323e44b6dd0dfc510d6fb7926678c5b4
     "should": "^3.3.2",
     "supertest": "^3.3.0"
   }

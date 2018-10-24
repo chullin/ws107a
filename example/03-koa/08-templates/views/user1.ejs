@@ -1,0 +1,39 @@
+<html>
+<body>
+
+<style>
+  table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+  }
+  
+  td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+      background-color: #dddddd;
+  }
+</style>
+<h2>EJS 練習模板</h2>
+
+<table>
+  <tr>
+    <th>欄位</th>
+    <th>名字</th> 
+    <th>年齡</th>
+    <th>物種</th>
+  </tr>
+  <tr>
+    <td>內容</td>
+    <td><%= user.name.first %></td>
+    <td><%= user.age %></td>
+    <td><%= user.species %></td>
+  </tr>
+</table>
+
+</body>
+</html>
