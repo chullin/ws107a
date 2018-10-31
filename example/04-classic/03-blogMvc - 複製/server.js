@@ -15,8 +15,6 @@ router
   .get('/', list)
   .get('/post/new', add)
   .get('/post/:id', show)
-  .get('/edit/:id', edit)
-  .post('/modify/:id',modify)
   .post('/post', create)
 
 app.use(router.routes())
@@ -31,7 +29,7 @@ async function add (ctx) {
 }
 
 async function show (ctx) {
-  const id = ctx.params.id   // 獲取 ctx 裡的 id ：https://segmentfault.com/q/101000000871940：
+  const id = ctx.params.id
   const post = M.get(id)
   if (!post) ctx.throw(404, 'invalid post id')
   ctx.body = await V.show(post)
@@ -40,21 +38,6 @@ async function show (ctx) {
 async function create (ctx) {
   const post = ctx.request.body
   M.add(post)
-  ctx.redirect('/')
-}
-
-async function edit (ctx) {
-  const id = ctx.params.id
-  const post = M.get(id)
-  if (!post) ctx.throw(404, 'invalid post id')
-  ctx.body = await V.edit(post)
-}
-
-async function modify (ctx) {
-  const post = ctx.request.body
-  post.id = ctx.params.id
-  console.log('modify:post=', post)
-  M.modify(post)
   ctx.redirect('/')
 }
 
