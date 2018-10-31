@@ -9,7 +9,7 @@ const app = module.exports = new Koa();
 // app.use(serve('.'));
 app.use(serve('.'));
 
-app.use(koaBody({
+app.use(koaBody({    // 限制內容大小只能1kb
   jsonLimit: '1kb'
 }));
 
@@ -21,7 +21,7 @@ app.use(async function(ctx) {
   if (ctx.url !== '/uppercase') return
   const body = ctx.request.body;
   if (!body.name) ctx.throw(400, '.name required');
-  ctx.body = { name: body.name.toUpperCase() };
+  ctx.body = { name: body.name.toUpperCase() };  // 小寫全部轉換成大寫
 });
-
+ 
 if (!module.parent) app.listen(3000);
