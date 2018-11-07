@@ -15,10 +15,6 @@ router
   .get('/', list)
   .get('/post/new', add)
   .get('/post/:id', show)
-  .get('/edit/:id',edit)
-  .get('/return',back)
-  .get('/delete/:id',remove)
-  .post('/modify/:id', modify)
   .post('/post', create)
 
 app.use(router.routes())
@@ -39,36 +35,9 @@ async function show (ctx) {
   ctx.body = await V.show(post)
 }
 
-async function edit (ctx) {
-  const id = ctx.params.id
-  const post = M.get(id)
-  console.log('post',post)
-  if (!post) ctx.throw(404, 'invalid post id')
-  ctx.body = await V.edit(post)
-}
-
-async function back (ctx) {
-  ctx.redirect('/')
-}
-
-async function remove (ctx) {
-  const id = ctx.params.id
-  const post = M.remove(id)
-  if (!post) ctx.throw(404, 'invalid post id')
-  ctx.redirect('/')
-}
-
 async function create (ctx) {
   const post = ctx.request.body
   M.add(post)
-  ctx.redirect('/')
-}
-
-async function modify (ctx) {
-  const post = ctx.request.body
-  post.id = ctx.params.id
-  console.log('post',post)
-  M.edit(post)
   ctx.redirect('/')
 }
 

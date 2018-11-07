@@ -67,21 +67,17 @@ V.layout = function (title, content) {
 
 V.list = function (posts) {
   let list = []
-  var count = 0
   for (let post of posts) {
-    if (post == null) continue
-    
     list.push(`
     <li>
       <h2>${post.title}</h2>
       <p><a href="/post/${post.id}">讀取貼文</a></p>
     </li>
     `)
-    count++
   }
   let content = `
   <h1>貼文列表</h1>
-  <p>您總共有 <strong>${count}</strong> 則貼文!</p>
+  <p>您總共有 <strong>${posts.length}</strong> 則貼文!</p>
   <p><a href="/post/new">創建新貼文</a></p>
   <ul id="posts">
     ${list.join('\n')}
@@ -104,21 +100,9 @@ V.new = function () {
 
 V.show = function (post) {
   return V.layout(post.title, `
-    <input type="button" value="修改內容" onclick="location.href='/edit/${post.id}'"></input>
-    <a href=/delete/${post.id}>刪除</a>
-    <a href=/return>返回目錄</a>
+    <a herf=/post/edit/${post.id}"編輯"></p>
+    </form>
     <h1>${post.title}</h1>
     <p>${post.body}</p>
   `)
 }
-
-V.edit = function (post) {
-  return V.layout('修改貼文', `
-  <h1>修改貼文</h1>
-  <form action="/modify/${post.id}" method="post">
-    <p><input type="text" value=${post.title} name="title"></p>
-    <p><textarea placeholder="Contents" name="body">${post.body}</textarea></p>
-    <p><input type="submit" value="修改"></p>
-  </form>
-  `)
-  }
