@@ -3,9 +3,9 @@
 <script>
 async function fetchReadme() {
   let r = await fetch(`/README.md`)
-  let text = await r.text()
+  let text = await r.text() // 用文字方式儲存
   console.log('text=', text)
-  document.getElementById('output').innerHTML = text
+  document.getElementById('output').innerHTML = text // 把text塞到output裡面
 }
 async function fetchJson() {
   let r = await fetch(`/ccc.json`)
@@ -15,7 +15,7 @@ async function fetchJson() {
 </script>
 <button id="fetchReadme" onclick="fetchReadme()">fetchReadme()</button>
 <button id="fetchJson" onclick="fetchJson()">fetchJson()</button>
-<pre id="output">
+<pre id="output"> <!--pre不管格式全部輸出-->
 </pre>
 </body>
 </html>

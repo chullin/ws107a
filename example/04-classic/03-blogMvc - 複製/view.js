@@ -10,7 +10,11 @@ V.layout = function (title, content) {
         padding: 80px;
         font: 16px Helvetica, Arial;
       }
-  
+      a {
+        text-decoration: none;
+        font-size: 15px;
+        font-style: oblique;
+      }
       h1 {
         font-size: 2em;
       }
@@ -104,9 +108,9 @@ V.new = function () {
 
 V.show = function (post) {
   return V.layout(post.title, `
-    <input type="button" value="修改內容" onclick="location.href='/edit/${post.id}'"></input>
-    <a href=/delete/${post.id}>刪除</a>
-    <a href=/return>返回目錄</a>
+    <a href=/return>返回目錄</a>&nbsp;&nbsp;
+    <a href=/edit/${post.id}>修改</a>&nbsp;&nbsp;
+    <a href=/delete/${post.id}>刪除</a>&nbsp;&nbsp;
     <h1>${post.title}</h1>
     <p>${post.body}</p>
   `)
