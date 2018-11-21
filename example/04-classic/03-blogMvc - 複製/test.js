@@ -74,5 +74,18 @@ describe('簡易網誌系統', function () {
       })
     })
   })
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  describe('GET /', function () { // 路徑 GET /
+    it('內文標題應該為《貼文列表》，而且只有 2 則貼文', function (done) {
+      request.get('/').expect(200, function (err, res) {
+        if (err) return done(err)
+
+        expect(res.header['content-type']).to.include('html') // 根目錄是個 html 文件
+        expect(res.text).to.include('<title>貼文列表</title>') // 內文標題為 Posts
+        expect(res.text).to.include('<p>您總共有 <strong>2</strong> 則貼文!</p>')
+        done()
+      })
+    })
+  })
 
 })
