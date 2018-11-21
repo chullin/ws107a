@@ -47,4 +47,32 @@ describe('簡易網誌系統', function () {
       })
     })
   })
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  describe('POST /post', function () { // 路徑 POST /post/new
+    it('應該會創建新貼文，然後轉址到根目錄 /', function (done) {
+      request
+        .post('/post')
+        .send({ title: '貼文 1', body: '內容 1' })
+        .end(function (err, res) {
+          if (err) return done(err)
+
+          expect(res.header.location).to.equal('/') // 路徑 / => 根目錄是個 html 文件
+          done()
+        })
+    })
+  })
+
+  describe('GET /post/1', function () {
+    it('應該會看到第 1 則貼文', function (done) {
+      request.get('/post/1').expect(200, function (err, res) {
+        if (err) return done(err)
+
+        expect(res.header['content-type']).to.include('html')
+        expect(res.text).to.include('<h1>貼文 1</h1>')
+        expect(res.text).to.include('<p>內容 1</p>')
+        done()
+      })
+    })
+  })
+
 })
