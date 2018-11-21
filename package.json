@@ -47,8 +47,12 @@
     "mz": "^2.7.0",
 >>>>>>> 796fb5d96fa2d5745e381aa3f7a482c93b3333ea
     "nightwatch": "^0.9.21",
+<<<<<<< HEAD
     "puppeteer": "^1.8.0",
 >>>>>>> 73110842323e44b6dd0dfc510d6fb7926678c5b4
+=======
+    "puppeteer": "^1.9.0",
+>>>>>>> 65d8a2ffdbb0afacec6283d4ac1fc1ca96046c5b
     "should": "^3.3.2",
     "supertest": "^3.3.0"
   }

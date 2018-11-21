@@ -1,6 +1,6 @@
 var R = {}
 
-window.onhashchange = async function () {
+window.onhashchange = async function () {  // 當#後面參數感變時就執行
   var r
   var tokens = window.location.hash.split('/')
   console.log('tokens=', tokens)
