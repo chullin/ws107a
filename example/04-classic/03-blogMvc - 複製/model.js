@@ -1,6 +1,8 @@
 const M = module.exports = {}
 
 const posts = []
+const Signup = []
+let flag,flagtwo;
 
 M.add = function (post) {
   const id = posts.push(post) - 1
@@ -30,4 +32,44 @@ M.get = function (id) {
 
 M.list = function () {
   return posts
+}
+
+M.signup = function (user){
+  console.log(user)
+  if (Signup.length != 0){
+    for(let i=0; Signup[i]; i++) {
+      if(user.account == Signup[i].account || user.account == /^[\s]$/ || user.password ==  /^[\s]$/){
+        flagtwo = false
+        break;
+      }
+      flagtwo = true
+    }
+    if(flagtwo == true){
+      Signup.push(user)
+    }
+  } else if(user.account != /[\s]+/ || user.password !=  /^[\s]$/){
+    flagtwo = true
+    Signup.push(user)
+    console.log('user.account=',user.account)
+  }else flagtwo = flase
+
+  console.log('signup=',Signup)  
+  return flagtwo
+
+}
+
+M.signin = function (signin_user){
+  for(i = 0; i < Signup.length; i++) {
+    console.log('signin_user.account=',signin_user.account)
+    console.log(' Signup[i].account=', Signup[i].account)
+    console.log('signin_user.password=',signin_user.password)
+    console.log('Signup[i].password=',Signup[i].password)
+    if(signin_user.account == Signup[i].account && signin_user.password == Signup[i].password){
+      flag = true
+      break;
+    }
+    else flag = false
+    }
+  return flag
+  
 }

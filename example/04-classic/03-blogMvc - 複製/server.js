@@ -12,7 +12,12 @@ app.use(logger())
 app.use(koaBody())
 
 router
-  .get('/', list)
+  .get('/',main)
+  .post('/signup',signup)
+  .get('/gotosigninpage',gotosigninpage)
+  .get('/gotosignuppage',gotosignuppage)
+  .post('/signin',signin)
+  .get('/list', list)
   .get('/post/new', add)
   .get('/post/:id', show)
   .get('/edit/:id',edit)
@@ -22,6 +27,40 @@ router
   .post('/post', create)
 
 app.use(router.routes())
+
+async function main (ctx) {
+  ctx.body = await V.main()  
+}
+
+async function gotosigninpage (ctx) {
+  ctx.body = await V.signin()
+}
+
+async function gotosignuppage (ctx) {
+  ctx.redirect('/')
+}
+
+
+async function signup (ctx) {
+  const user = ctx.request.body
+  if(M.signup(user)){
+    ctx.body = await V.signin()
+  }
+  else {
+    ctx.body = await V.main()
+  }
+}
+
+async function signin (ctx) {
+  const signin_user = ctx.request.body
+  console.log('singinuser=',signin_user)
+  if(M.signin(signin_user)) {
+    ctx.redirect('/list')
+  }
+  else {
+    ctx.body = await V.signin()
+  }
+}
 
 async function list (ctx) {
   const posts = M.list()
@@ -48,20 +87,21 @@ async function edit (ctx) {
 }
 
 async function back (ctx) {
-  ctx.redirect('/')
+  ctx.redirect('/list')
 }
 
 async function remove (ctx) {
   const id = ctx.params.id
   const post = M.remove(id)
   if (!post) ctx.throw(404, 'invalid post id')
-  ctx.redirect('/')
+  ctx.redirect('/list')
 }
 
 async function create (ctx) {
   const post = ctx.request.body
+  console.log('post=',post)
   M.add(post)
-  ctx.redirect('/')
+  ctx.redirect('/list')
 }
 
 async function modify (ctx) {
@@ -69,7 +109,7 @@ async function modify (ctx) {
   post.id = ctx.params.id
   console.log('post',post)
   M.edit(post)
-  ctx.redirect('/')
+  ctx.redirect('/list')
 }
 
 if (!module.parent) {

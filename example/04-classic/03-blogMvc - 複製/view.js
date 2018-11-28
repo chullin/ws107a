@@ -45,7 +45,7 @@ V.layout = function (title, content) {
         height: 300px;
       }
   
-      input[type=text],
+      input[type=text],input[type=password],
       textarea {
         border: 1px solid #eee;
         border-top-color: #ddd;
@@ -55,8 +55,8 @@ V.layout = function (title, content) {
         font-size: .8em;
       }
   
-      input[type=text] {
-        width: 500px;
+      input[type=text],input[type=password] {
+        width: 300px;
       }
     </style>
   </head>
@@ -84,7 +84,9 @@ V.list = function (posts) {
     count++
   }
   let content = `
-  <h1>貼文列表</h1>
+  <p><h1>貼文列表</h1>
+  <h3>登入ID為</h3></p>
+  <p><a href="/gotosigninpage">登出</a></p>
   <p>您總共有 <strong>${count}</strong> 則貼文!</p>
   <p><a href="/post/new">創建新貼文</a></p>
   <ul id="posts">
@@ -126,3 +128,29 @@ V.edit = function (post) {
   </form>
   `)
   }
+
+V.main = function(){
+  return V.layout('註冊', `
+  <h1>註冊</h1>
+  <a href=/gotosigninpage>登入</a>
+    <form action="/signup" method="post">
+      <p>帳號：<input type="text" name='account' id="account" ></p>
+      <p>密碼：<input type="password" name='password' id="password" ></p>
+
+      <p><input type="submit" value="註冊"></p>
+    </form> 
+    `)
+}
+
+V.signin = function(){
+  return V.layout('登入', `
+  <h1>登入</h1>
+  <a href=/gotosignuppage>註冊</a>
+    <form action="/signin" method="post">
+      <p>帳號：<input type="text" name='account' id="account" ></p>
+      <p>密碼：<input type="password" name='password' id="password" ></p>
+
+      <p><input type="submit" value="登入"></p>
+    </form> 
+    `)
+}
