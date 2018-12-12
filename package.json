@@ -1,7 +1,7 @@
 {
   "name": "ws107a",
   "version": "1.0.0",
-  "description": "欄位       |  內容\r ----------|----------------------------\r 課程名稱   | 網站設計進階\r 開課單位   | 金門大學資訊工程系\r 開課年度   | 107 學年上學期\r 學員姓名   | \r 教師姓名   | 陳鍾誠\r 上課教材   | [wiki](https://github.com/cccnqu/wd107a/wiki)\r 程式範例   | [example](example)\r 練習作業   | [exercise](exercise)\r 專案作品   | [project](project)\r 學員筆記   | [wiki](../../wiki)\r 疑問解答   | [issue](https://github.com/cccnqu/wd107a/issues)\r 更多資源   | [more](more)\r 課程網站   | https://mdbookspace.com/view/ccc/js1.md",
+  "description": "欄位       |  內容\r ----------|----------------------------\r 課程名稱   | 網站設計進階\r 開課單位   | 金門大學資訊工程系\r 開課年度   | 107 學年上學期\r 學員姓名   | \r 教師姓名   | 陳鍾誠\r 上課教材   | [wiki](https://github.com/cccnqu/wd107a/wiki)\r 程式範例   | [example](example)\r 練習作業   | [exercise](exercise)\r 專案作品   | [project](project)\r 學員筆記   | [wiki](../../wiki)\r 疑問解答   | [issue](https://github.com/cccnqu/wd107a/issues)\r 更多資源   | [more](more)\r 課程網站   | https://mdbookspace.com/view/ccc/js1.md",
   "main": "index.js",
   "directories": {
     "example": "example"
@@ -24,7 +24,6 @@
     "ccclodash2": "0.0.1",
     "ejs": "^2.6.1",
     "fs-promise": "^2.0.3",
-    "global": "^4.3.2",
     "kdd": "^1.1.0",
     "koa": "^2.6.2",
     "koa-basic-auth": "^3.0.0",
@@ -39,20 +38,10 @@
     "koa-static": "^5.0.0",
     "koa-views": "^6.1.4",
     "lodash": "^4.17.11",
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "mocha": "^5.2.0",
-=======
-=======
+    "mongodb": "^3.1.10",
     "mz": "^2.7.0",
->>>>>>> 796fb5d96fa2d5745e381aa3f7a482c93b3333ea
     "nightwatch": "^0.9.21",
-<<<<<<< HEAD
-    "puppeteer": "^1.8.0",
->>>>>>> 73110842323e44b6dd0dfc510d6fb7926678c5b4
-=======
     "puppeteer": "^1.9.0",
->>>>>>> 65d8a2ffdbb0afacec6283d4ac1fc1ca96046c5b
     "should": "^3.3.2",
     "supertest": "^3.3.0"
   }

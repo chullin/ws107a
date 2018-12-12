@@ -69,7 +69,7 @@ V.layout = function (title, content) {
   `
 }
 
-V.list = function (posts) {
+V.list = function (posts, userID) {
   let list = []
   var count = 0
   for (let post of posts) {
@@ -85,7 +85,7 @@ V.list = function (posts) {
   }
   let content = `
   <p><h1>貼文列表</h1>
-  <h3>登入ID為</h3></p>
+  <h3>登入ID為 <strong>${userID}</strong></h3></p>
   <p><a href="/gotosigninpage">登出</a></p>
   <p>您總共有 <strong>${count}</strong> 則貼文!</p>
   <p><a href="/post/new">創建新貼文</a></p>

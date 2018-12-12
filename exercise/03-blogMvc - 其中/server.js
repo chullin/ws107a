@@ -64,7 +64,9 @@ async function signin (ctx) {
 
 async function list (ctx) {
   const posts = M.list()
-  ctx.body = await V.list(posts)  
+  const UserId = M.getUserId()
+  console.log('UserId=',UserId)
+  ctx.body = await V.list(posts, UserId)  
 }
 
 async function add (ctx) {
