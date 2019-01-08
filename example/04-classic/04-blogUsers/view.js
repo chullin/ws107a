@@ -85,7 +85,7 @@ V.listUsers = function (users) {
     list.push(`<li><a href="/${user}/posts">${user} 的留言板</a></li>`)
   }
   return V.layout(`<h1>所有留言板列表</h1>`, `<ol>${list.join('\n')}</ol>`)
-}
+}//      V.layout = function (title, content) 
 
 V.userLayout = function (user, title, content) {
   return V.layout(title, `<h1>${user} 的留言板</h1>\n` + content)

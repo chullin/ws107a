@@ -72,7 +72,7 @@ V.list = function (posts) {
     if (post == null) continue
     
     list.push(`
-    <li>
+    <li id="post">
       <h2>${post.title}</h2>
       <p><a href="/post/${post.id}">讀取貼文</a></p>
     </li>

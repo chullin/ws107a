@@ -47,7 +47,7 @@ M.user.profileRead = async function (user) {
   return profile
 }
 
-M.user.profileUpdate = async function (profile) {
+M.user.profileUpdate = async function (profile) { // upsert 如果設置為true，則在沒有文檔與查詢條件匹配時創建新文檔。默認值為false，未 找到匹配項時不插入新文檔。
   await M.profiles.updateOne({user: profile.user}, {$set: profile}, { upsert: false })
 }
 

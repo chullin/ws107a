@@ -19,6 +19,7 @@ M.close = async function () {
 
 M.listBoards = async function () {
   let boards = await M.boards.find({}).toArray()
+  console.log('boards=', boards) // 主頁的使用者名稱
   return boards
 }
 
@@ -29,6 +30,8 @@ M.login = async function (user, password) {
 
 M.signup = async function (user) {
   let profile = await M.profiles.findOne({user: user})
+  console.log('profile=',profile)
+  console.log('"profile == null"=',profile == null)
   return profile == null
 }
 

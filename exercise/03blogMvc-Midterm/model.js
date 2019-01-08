@@ -40,10 +40,17 @@ M.list = function () {
 }
 
 M.signup = function (user){
-  console.log(user)
-  if (Signup.length != 0){
-    for(let i=0; Signup[i]; i++) {
-      if(user.account == Signup[i].account || user.account == "" || user.password ==  /^[\s]$/){
+  console.log('user=',user)
+  console.log('Signup.length=',Signup.length)
+  console.log('user.account.match=',user.account.match(/^[\s]+/))
+  console.log('user.password.match=',user.password.match(/^[\s]+/))
+  console.log('Signup=',Signup)
+  console.log('user.account=',user.account)
+  console.log('user.password=',user.password)
+  if (Signup.length != 0){ // 如果登入長度為不為0
+    console.log('run in 1')
+    for(let i=0; Signup[i]; i++) { // 如果與舊帳號相等、帳號為 0、密碼為 0
+      if(user.account == Signup[i].account || user.account == user.account.match(/^[\s]+/) || user.password ==  user.password.match(/^[\s]+/)){
         flagtwo = false
         break;
       }
@@ -52,12 +59,22 @@ M.signup = function (user){
     if(flagtwo == true){
       Signup.push(user)
     }
-  } else if(user.account != /[\s]+/ || user.password !=  /^[\s]$/){  // 正規表達式只能使用match或是函數，不能直接比對
-    flagtwo = true
-    Signup.push(user)
-    console.log('user.account=',user.account)
-  }else flagtwo = flase
-
+  } // 正規表達式只能使用match或是函數，不能直接比對
+   // 如果登入長度不為 0，帳號或是密碼為 0就不行
+  else if(user.account.match(/^[\s]+/) != null){
+    if(user.password.match(/^[\s]+/) != null){
+      if(user.account != user.account.match(/^[\s]+/) || user.password !=  user.password.match(/^[\s]+/)){
+        console.log('run in 2')
+        flagtwo = true
+        Signup.push(user)
+        console.log('user.account=',user.account)
+      }
+    }
+  }
+  else { // 如果登入長度為 0
+    flagtwo = false
+    console.log('run in 3')
+  }
   console.log('signup=',Signup)  
   return flagtwo
 

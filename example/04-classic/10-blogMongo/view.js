@@ -14,10 +14,7 @@ V.layout = function (title, content, ctx) {
     <header>
       <title>${title}</title>
       <div id="header">
-        <div class="navbar" style="float:left">
-          <a onclick="Ui.openNav()" style="cursor:pointer">&#9776;</a>
-          <a href="#" style="font-family:Verdana; text-shadow: 1px 0px 1px rgb(243, 243, 154); "></a>
-          </div>
+        
           <div class="navbar" style="float:left">
             <a href="#title" id="title">${title}</a>
           </div>

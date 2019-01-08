@@ -6,15 +6,7 @@ V.layout = function (title, content) {
   <head>
     <title>${title}</title>
     <style>
-      body {
-        padding: 80px;
-        font: 16px Helvetica, Arial;
-      }
-      a {
-        text-decoration: none;
-        font-size: 15px;
-        font-style: oblique;
-      }
+
       h1 {
         font-size: 2em;
       }
@@ -22,7 +14,31 @@ V.layout = function (title, content) {
       h2 {
         font-size: 1.2em;
       }
-  
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+      }
+      
+      li {
+        float: left;
+      }
+      
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      
+      li a:hover {
+        background-color: #111;
+      }
+      
       #posts {
         margin: 0;
         padding: 0;
@@ -69,7 +85,7 @@ V.layout = function (title, content) {
   `
 }
 
-V.list = function (posts, userID) {
+V.list = function (posts, passport) {
   let list = []
   var count = 0
   for (let post of posts) {
@@ -84,9 +100,17 @@ V.list = function (posts, userID) {
     count++
   }
   let content = `
-  <p><h1>貼文列表</h1>
-  <h3>登入ID為 <strong>${userID}</strong></h3></p>
-  <p><a href="/gotosigninpage">登出</a></p>
+
+  <ul>
+    <li style='font-weight:bold'><a class="active" href="#">貼文列表</a></li>
+    <li><a href=/gotosigninpage>登入</a></li>
+    <li><a href=/>註冊</a></li>
+    <li><a href="/gotosigninpage">登出</a></li>
+    <li><a class="active" href="#"> ${passport.user}</li>
+  </ul>
+
+
+
   <p>您總共有 <strong>${count}</strong> 則貼文!</p>
   <p><a href="/post/new">創建新貼文</a></p>
   <ul id="posts">
@@ -131,26 +155,63 @@ V.edit = function (post) {
 
 V.main = function(){
   return V.layout('註冊', `
-  <h1>註冊</h1>
-  <a href=/gotosigninpage>登入</a>
-    <form action="/signup" method="post">
-      <p>帳號：<input type="text" name='account' id="account" ></p>
-      <p>密碼：<input type="password" name='password' id="password" ></p>
+  <ul>
+    <li style='font-weight:bold'><a class="active" href="#">註冊</a></li>
+    <li><a href=/gotosigninpage>登入</a></li>
+  </ul>
+        <form action="/signup" method="post">
+          <p>帳號：<input type="text" name='user' id="user" autocomplete="off"></p>
+          <p>密碼：<input type="password" name='password' id="password" autocomplete="off"></p>
 
-      <p><input type="submit" value="註冊"></p>
-    </form> 
+          <p><input type="submit" value="註冊"></p>
+        </form> 
     `)
 }
 
 V.signin = function(){
   return V.layout('登入', `
-  <h1>登入</h1>
-  <a href=/gotosignuppage>註冊</a>
-    <form action="/signin" method="post">
-      <p>帳號：<input type="text" name='account' id="account" ></p>
-      <p>密碼：<input type="password" name='password' id="password" ></p>
+  <ul>
+    <li style='font-weight:bold'><a class="active" href="#">登入</a></li>
+    <li><a href=/gotosignuppage>註冊</a></li>
+  </ul>
+        <form action="/signin" method="post">
+          <p>帳號：<input type="text" name='user' id="user" autocomplete="off"></p>
+          <p>密碼：<input type="password" name='password' id="password" autocomplete="off"></p>
 
-      <p><input type="submit" value="登入"></p>
-    </form> 
+          <p><input type="submit" value="登入"></p>
+        </form> 
     `)
+}
+
+V.success = function (ctx) {
+  return V.layout('成功！', `
+  <ul>
+    <li><a href=/gotosigninpage>登入</a></li>
+    <li><a href=/>註冊</a></li>
+  </ul>
+  <br>
+  <span style="font-family:Microsoft JhengHei;">註冊成功!</span><br>
+  `, ctx)
+}
+
+V.failup = function (ctx) {
+  return V.layout('成功！', `
+  <ul>
+    <li><a href=/gotosigninpage>登入</a></li>
+    <li><a href=/>註冊</a></li>
+  </ul>
+  <br>
+  <span style="font-family:Microsoft JhengHei;">註冊失敗!</span><br>
+  `, ctx)
+}
+
+V.failin = function (ctx) {
+  return V.layout('成功！', `
+  <ul>
+    <li><a href=/gotosigninpage>登入</a></li>
+    <li><a href=/>註冊</a></li>
+  </ul>
+  <br>
+  <span style="font-family:Microsoft JhengHei;">登入失敗!</span><br>
+  `, ctx)
 }

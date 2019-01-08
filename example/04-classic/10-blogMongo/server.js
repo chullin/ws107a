@@ -4,25 +4,25 @@ const path = require('path')
 const logger = require('koa-logger')
 const router = require('koa-router')()
 const koaBody = require('koa-body')
-const session = require('koa-session')
+const session = require('koa-session')/**https://www.tutorialspoint.com/koajs/koajs_sessions.htm*/
 const koaStatic = require('koa-static')
 
 const Koa = require('koa')
 const app = (module.exports = new Koa())
 
-app.keys = ['some secret hurr']
+app.keys = ['some secret hurr']   /**https://segmentfault.com/a/1190000013039187*/
 
 const CONFIG = {
   key: 'kdlasfe,dalj.amvlkdajfas', /** (string) cookie key (default is koa:sess) */
   /** (number || 'session') maxAge in ms (default is 1 days) */
   /** 'session' will result in a cookie that expires when session/browser is closed */
   /** Warning: If a session cookie is stolen, this cookie will never expire */
-  maxAge: 86400000,
+  maxAge: 86400000, /** 这个是确定cookie的有效期，默认是一天*/
   autoCommit: true, /** (boolean) automatically commit headers (default true) */
   overwrite: true, /** (boolean) can overwrite or not (default true) */
-  httpOnly: true, /** (boolean) httpOnly or not (default true) */
-  signed: true, /** (boolean) signed or not (default true) */
-  rolling: false, /** (boolean) Force a session identifier cookie to be set on every response. The expiration is reset to the original maxAge, resetting the expiration countdown. (default is false) */
+  httpOnly: true, /** 表示是否可以通过javascript来修改，设成true会更加安全 */
+  signed: true, /** 这个涉及到cookie的安全性 */
+  rolling: false, /** 这两个都是涉及到cookie有效期的更新策略 */
   renew: false /** (boolean) renew session when session is nearly expired, so we can always keep user logged in. (default is false) */
 }
 
@@ -62,6 +62,8 @@ async function showSignup (ctx) {
 
 async function login (ctx) {
   const passport = ctx.request.body
+  console.log('passport.user=',passport.user)
+  console.log('passport.password=',passport.password)
   if (await M.login(passport.user, passport.password)) {
     ctx.session.user = passport.user
     ctx.redirect(`/${passport.user}/posts`)
@@ -74,6 +76,7 @@ async function login (ctx) {
 async function signup (ctx) {
   console.log('signup: body=', ctx.request.body)
   const passport = ctx.request.body
+  console.log('passport.user=',passport.user)
   if (await M.signup(passport.user)) {
     await M.addUser(passport)
     ctx.body = V.success(ctx)
